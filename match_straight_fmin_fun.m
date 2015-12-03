@@ -9,6 +9,7 @@ yd = 0;
 for i = 1:pNum
     xin = adis(i,:);
     [Be,BeA] = activeRuleNew(ratt, xin);
+    
     if isnan(Be(1))
         disp(1111);
     end

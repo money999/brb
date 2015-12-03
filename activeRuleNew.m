@@ -48,6 +48,7 @@ mulpre = ones(1,preN);
 mai = maI;%激活了mai条规则
 res = maRes;%%%每行存储激活的前提属性位置
 actrule(mai, 2) = 0;%第一列存激活规则的编号，第二列存激活权重wk
+
 for i = preN-1:-1:1
     mulpre(i) = mulpre(i+1) * preNE(i+1);
 end
@@ -66,7 +67,9 @@ for i = 1:mai
     actrule(i,:) = [tmpk, wk];
 end
 tmpActRuleWSum = sum (actrule(:,2));
-actrule(:,2) = actrule(:,2)/tmpActRuleWSum;
+if tmpActRuleWSum ~= 0
+    actrule(:,2) = actrule(:,2)/tmpActRuleWSum;
+end
 m = zeros(mai, BNum);
 mw = zeros(mai, 1);
 mu = zeros(mai, 1);

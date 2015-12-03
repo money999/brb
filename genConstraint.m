@@ -64,7 +64,7 @@ A = [uA; pA];
 b = [ub; pb];
 
 %%%最大最小值约束
-%只要改变 u 和 前提候选值首尾值
+%改变 u 和 前提候选值首尾值
 
 lb = zeros(1, xNum);
 ub = ones(1, xNum);
@@ -89,6 +89,10 @@ if par.prAFlag
         ite = ite + tt - 2;
     end
 end
+%再改变每条规则权重大于0（没有等）
+wAS = rNum * BNum + 1;%权重在x0中的起点
+wAE = rNum * BNum + rNum;%权重在x0中的终点
+lb(wAS:wAE) = 1e-8;
 
 end
 

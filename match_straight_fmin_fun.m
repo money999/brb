@@ -9,16 +9,31 @@ yd = 0;
 for i = 1:pNum
     xin = adis(i,:);
     [Be,BeA] = activeRuleNew(ratt, xin);
+    if isnan(Be(1))
+        disp(1111);
+    end
     
-    if (adis(i,3) >= 0.51)
+    if isnan(Be(1))
+        disp(2222);
+    end
+    
+    if (adis(i,3) >= 0.50)
         yd = yd + abs(1 - Be(1)) + abs(Be(2) - 0);
         continue;
+    end
+    
+    if isnan(yd)
+        disp(1);
     end
     
     if (adis(i,2) > 1)
         tv0 = (adis(i,2) - 1) / 14 * 5 + 0.5;
         tv1 = 1 - tv0;
         yd = yd + abs(tv0 - Be(1)) + abs(tv1 - Be(2));
+    end
+    
+    if isnan(yd)
+        disp(2);
     end
     
     if (adis(i,1) < 1.2)
@@ -28,6 +43,10 @@ for i = 1:pNum
         tp1 = 1 - tp0;
         yd = yd + abs(tp0 - Be(1)) + abs(tp1 - Be(2));
     end
+end
+
+if isnan(yd)
+    disp(3);
 end
 
 % yk = 0;

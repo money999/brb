@@ -88,6 +88,9 @@ for i = 1:BNum
     c(i) = prod(m(:,i) + mu + mw) - (cu + cw);
 end
 
+
+
+
 k1 = sum(c) + cu + cw;
 c = c ./ k1;
 cw = cw /k1;
@@ -95,10 +98,6 @@ cu = cu / k1;
 
 B = c ./ ( 1 - cu );
 BA = cw / ( 1 - cu );
-
-if isnan(sum(B))
-    disp(6969);
-end
 
 end
 

@@ -34,12 +34,12 @@ for i = 1:pNum
     end
     
     
-    if (adis(i,2) > 1)
-        tv1 = -5/9 * adis(i,2) + 1;
-        tv0 = 1 - tv1;
-        yd = yd + abs(tv0 - Be(1)) + abs(tv1 - Be(2));
-    end
-   
+%     if (adis(i,2) > 1)
+%         tv1 = -5/9 * adis(i,2) + 1;
+%         tv0 = 1 - tv1;
+%         yd = yd + abs(tv0 - Be(1)) + abs(tv1 - Be(2));
+%     end
+
     
     
 end

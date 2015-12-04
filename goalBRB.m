@@ -2,7 +2,11 @@ function [ result ] = goalBRB( m1, m0, mA )
 %UNTITLED 此处显示有关此函数的摘要
 %   此处显示详细说明
 %w = log((1-m0)./(1.000001-m1));
-w = m1./m0;
+w = m1;
+
+if isnan(sum(sum(w)))
+    disp(95123);
+end
 
 %生成01规划所要的约束条件
 num = size(w,1);

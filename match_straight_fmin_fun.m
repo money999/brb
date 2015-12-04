@@ -23,22 +23,37 @@ for i = 1:pNum
         continue;
     end
     
-    if (adis(i,1) <= 1)
+    if (adis(i,2) > 1)
+        tv0 = (adis(i,2) - 1) / 14 * 5 + 0.5;
+        tv1 = 1 - tv0;
+        yd = yd + abs(tv0 - Be(1)) + abs(tv1 - Be(2));
+    end
+    
+    if (adis(i,1) < 1.2)
         yd = yd + abs(0 - Be(1)) + abs(Be(2) - 1);
-    elseif (adis(i,1) >5)
-        yd = yd + abs(1 - Be(1)) + abs(Be(2) - 0);
     else
-        tp1 = -0.25 * adis(i,1) + 1.25;
-        tp0 = 1 - tp1;
+        tp0 = (adis(i,1) - 1.2) / 34 * 5;
+        tp1 = 1 - tp0;
         yd = yd + abs(tp0 - Be(1)) + abs(tp1 - Be(2));
     end
     
     
-    if (adis(i,2) > 1)
-        tv1 = -5/9 * adis(i,2) + 1;
-        tv0 = 1 - tv1;
-        yd = yd + abs(tv0 - Be(1)) + abs(tv1 - Be(2));
-    end
+    
+%     if (adis(i,1) <= 1)
+%         yd = yd + abs(0 - Be(1)) + abs(Be(2) - 1);
+%     elseif (adis(i,1) >5)
+%         yd = yd + abs(1 - Be(1)) + abs(Be(2) - 0);
+%     else
+%         tp1 = -0.25 * adis(i,1) + 1.25;
+%         tp0 = 1 - tp1;
+%         yd = yd + abs(tp0 - Be(1)) + abs(tp1 - Be(2));
+%     end
+%     
+%     if (adis(i,2) > 1)
+%         tv1 = -5/9 * adis(i,2) + 1;
+%         tv0 = 1 - tv1;
+%         yd = yd + abs(tv0 - Be(1)) + abs(tv1 - Be(2));
+%     end
    
     
     

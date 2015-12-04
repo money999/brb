@@ -1,18 +1,18 @@
 clear global
 
-% [ ratt, par] = match_orig_initRuleGivenData();
-% x0 = ratt2x(ratt, par);
-% [A,b,Aeq,beq,lb,ub] = genConstraint(ratt, x0, par);
-% x0 = x0';
-% lb = lb';
-% ub = ub';
-% [adis] = gen_straight_match_source();
-% 
-% options = optimset('Algorithm', 'active-set', 'Display' , 'Iter' , 'MaxFunEvals'...
-%     , 20000*length(x0) , 'MaxIter', 10000 , 'TolFun' , 1e-6 , 'TolX' , 1e-6 , 'TolCon', 1e-6);
-% [x,fval,flag] = fmincon(@(x) match_straight_fmin_fun(par, adis, x ) ...
-%     ,x0, A, b, [], [], lb, ub,[],options);
-% rattNew = x2ratt(x, par);
+[ ratt, par] = match_orig_initRuleGivenData();
+x0 = ratt2x(ratt, par);
+[A,b,Aeq,beq,lb,ub] = genConstraint(ratt, x0, par);
+x0 = x0';
+lb = lb';
+ub = ub';
+[adis] = gen_straight_match_source();
+
+options = optimset('Algorithm', 'active-set', 'Display' , 'Iter' , 'MaxFunEvals'...
+    , 20000*length(x0) , 'MaxIter', 10000 , 'TolFun' , 1e-6 , 'TolX' , 1e-6 , 'TolCon', 1e-6);
+[x,fval,flag] = fmincon(@(x) match_straight_fmin_fun(par, adis, x ) ...
+    ,x0, A, b, [], [], lb, ub,[],options);
+rattNew = x2ratt(x, par);
 
 disp('dddd');
 
